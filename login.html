@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        /* Global Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            background-image: url('https://images.pexels.com/photos/50594/sea-bay-waterfront-beach-50594.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'); /* Background image */
+            background-size: cover; /* Make the background cover the entire page */
+            background-position: center; /* Center the background image */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-attachment: fixed; /* To keep the background fixed */
+        }
+
+        .login-container {
+            background: rgba(255, 255, 255, 0.8); /* Semi-transparent background with opacity */
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            transform: scale(0.9);
+            animation: scaleIn 0.5s ease forwards; /* Animation for login box appearance */
+        }
+
+        /* Keyframe for scale animation */
+        @keyframes scaleIn {
+            to {
+                transform: scale(1);
+            }
+        }
+
+        h1 {
+            color: #ff6ec7; /* Attractive pinkish color */
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        input {
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        input:focus {
+            border-color: #ff6ec7; /* Pink border on focus */
+            box-shadow: 0 0 5px rgba(255, 110, 199, 0.8); /* Soft pink shadow */
+        }
+
+        button {
+            padding: 0.8rem;
+            background: #00c9ff; /* Attractive cyan color */
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        button:hover {
+            background: #009ecc; /* Darker cyan on hover */
+            transform: scale(1.05); /* Button scaling effect */
+        }
+
+        button:active {
+            transform: scale(0.98); /* Button press effect */
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Login</h1>
+        <form onsubmit="handleLogin(event)">
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
+    <script>
+        function handleLogin(event) {
+            event.preventDefault(); // Prevent form submission
+            // Redirect to the Student Housing page
+            window.location.href = "indexzzz.html";
+        }
+    </script>
+</body>
+</html>

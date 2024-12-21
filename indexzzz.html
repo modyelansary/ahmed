@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Housing</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            color: #fff;
+        }
+
+        
+        video#background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: 0;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .navbar .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .navbar .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .navbar .nav-links a:hover {
+            color: #00c4ff;
+        }
+
+        .btn {
+            background-color: #ff5722;
+            color: white;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #e64a19;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 8rem 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            animation: fadeIn 3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .search-section {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .search-form input, .search-form select, .search-form button {
+            padding: 0.5rem;
+            font-size: 1rem;
+            margin: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .listings, .features, .faq, .contact {
+            padding: 4rem 2rem;
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .card-container {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .card {
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            width: 30%;
+            background: rgba(0, 0, 0, 0.6);
+            color: #fff;
+            transition: transform 0.3s;
+            margin-bottom: 1.5rem;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            animation: fadeInImage 1.5s ease-in-out;
+        }
+
+        @keyframes fadeInImage {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .footer {
+            text-align: center;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .footer .social-links a {
+            color: #fff;
+            margin: 0 0.5rem;
+            text-decoration: none;
+        }
+
+        .footer .social-links a:hover {
+            color: #00c4ff;
+        }
+    </style>
+</head>
+<body>
+    
+    <video id="background-video" autoplay muted loop>
+        <source src="mmm.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <div class="overlay"></div>
+
+    
+    <header>
+        <nav class="navbar">
+            <div class="logo">StudentHousing</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#search">Find Housing</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="login.html" class="btn">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    
+    <main>
+        <section id="home" class="hero">
+            <h1>Find Your Perfect Housing Solution</h1>
+            <p>Connecting students with trusted property owners near universities.</p>
+            <a href="#search" class="btn">Start Searching</a>
+        </section>
+
+        
+        <section id="search" class="search-section">
+            <h2>Search for Housing</h2>
+            <form id="search-form" class="search-form" onsubmit="handleSearch(event)">
+                <input type="text" id="city-university" placeholder="City or University" required>
+                <select id="housing-type">
+                    <option value="room">Room</option>
+                    <option value="apartment">Apartment</option>
+                    <option value="shared">Shared Housing</option>
+                </select>
+                <input type="number" id="max-budget" placeholder="Max Budget ($)" required>
+                <button type="submit" class="btn">Search</button>
+            </form>
+        </section>
+
+        
+        <section id="listings" class="listings">
+            <h2>Featured Listings</h2>
+            <div class="card-container">
+                <div class="card">
+                    <img src="num4.jpg" alt="Modern Apartment">
+                    <h3>Modern Apartment</h3>
+                    <p>Near University A, 2500EG /month</p>
+                </div>
+                <div class="card">
+                    <img src="num3.jpg" alt="Shared Housing">
+                    <h3>Shared Housing</h3>
+                    <p>Near University B, 1500 EG/month</p>
+                </div>
+                <div class="card">
+                    <img src="num5.jpg" alt="Single Room">
+                    <h3>Single Room</h3>
+                    <p>Near University C, 2000 EG/month</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    
+    <footer class="footer">
+        <p>&copy; 2024 ENG ZEZO.</p>
+        <div class="social-links">
+            <a href="https://www.facebook.com/profile.php?id=100050649620293">Facebook</a>
+            <a href="https://x.com/ahmd_hsyn27812?t=fMJUi4y2bG3n8eVGEmNRyw&s=08">Twitter</a>
+            <a href="https://www.instagram.com/ahmed_tarek_772?igsh=MTZ6MGFpd2lueW13YQ%3D%3D&utm_source=qr">Instagram</a>
+        </div>
+    </footer>
+
+    <script>
+        
+        function handleSearch(event) {
+            event.preventDefault(); 
+            const cityUniversity = document.getElementById('city-university').value;
+            const housingType = document.getElementById('housing-type').value;
+            const maxBudget = document.getElementById('max-budget').value;
+
+        
+            console.log(`Searching for ${housingType} in ${cityUniversity} with a max budget of $${maxBudget}`);
+            
+            
+            alert(`Searching for ${housingType} in ${cityUniversity} within $${maxBudget} budget.`);
+        }
+    </script>
+</body>
+</html>
